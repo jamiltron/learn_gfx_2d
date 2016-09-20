@@ -7,7 +7,12 @@ authors = ["Justin Hamilton <justinanthonyhamilton@gmail.com>"]
 gfx = "*"
 gfx_window_glutin = "*"
 glutin = "*"
+time = "*"
 
 [[example]]
 name = "triangle_basic"
 path = "examples/triangle_basic/src/main.rs"
+
+[[example]]
+name = "triangle_flashing"
+path = "examples/triangle_flashing/src/main.rs"
