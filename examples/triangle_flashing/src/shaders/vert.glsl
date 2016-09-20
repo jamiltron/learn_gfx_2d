@@ -2,11 +2,13 @@
 
 in vec2 position;
 
-uniform vec3 color;
+uniform ColorData {
+  vec3 color_data;
+};
 
 out vec4 our_color;
 
 void main() {
-  our_color = vec4(color, 1.0);
+  our_color = vec4(color_data, 1.0);
   gl_Position = vec4(position, 0.0, 1.0);
 }

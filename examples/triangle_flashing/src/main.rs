@@ -12,13 +12,17 @@ use gfx::Device;
 use std::f32;
 
 gfx_defines! {
+    constant ColorData {
+        color: [f32; 3] = "color_data",
+    }
+
     vertex Vertex {
         position: [f32; 2] = "position",
     }
 
     pipeline pipe {
         vertex_buffer: gfx::VertexBuffer<Vertex> = (),
-        color: gfx::Global<[f32; 3]> = "color",
+        color_data: gfx::ConstantBuffer<ColorData> = "ColorData",
         out_color: gfx::RenderTarget<ColorFormat> = "out_color",
     }
 }
@@ -53,11 +57,13 @@ pub fn main() {
     let (vertex_buffer, slice) = factory.create_vertex_buffer_with_slice(&TRIANGLE, ());
 
     // this time our pipe is mutable, because we will be changing the color value
-    let mut data = pipe::Data {
+    let data = pipe::Data {
         vertex_buffer: vertex_buffer,
-        color: [1.0, 1.0, 1.0],
+        color_data: factory.create_constant_buffer(1),
         out_color: main_color,
     };
+
+    let mut color_data = ColorData { color: [1.0, 1.0, 1.0] };
 
     'main: loop {
         for event in window.poll_events() {
@@ -71,7 +77,10 @@ pub fn main() {
         // flash the triangle's color based on time
         let seconds = time::precise_time_s() as f32;
         let color_value = seconds.sin().abs();
-        data.color = [color_value, color_value, color_value];
+        color_data.color = [color_value, color_value, color_value];
+
+        encoder.update_constant_buffer(&data.color_data, &color_data);
+
 
         encoder.clear(&data.out_color, CLEAR_COLOR);
         encoder.draw(&slice, &pso, &data);
