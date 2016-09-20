@@ -16,3 +16,7 @@ path = "examples/triangle_basic/src/main.rs"
 [[example]]
 name = "triangle_flashing"
 path = "examples/triangle_flashing/src/main.rs"
+
+[[example]]
+name = "triangle_interpolated"
+path = "examples/triangle_interpolated/src/main.rs"
