@@ -79,8 +79,8 @@ pub fn main() {
         let color_value = seconds.sin().abs();
         color_data.color = [color_value, color_value, color_value];
 
+        // modify the color data constant buffer with the new dynamic color
         encoder.update_constant_buffer(&data.color_data, &color_data);
-
 
         encoder.clear(&data.out_color, CLEAR_COLOR);
         encoder.draw(&slice, &pso, &data);
