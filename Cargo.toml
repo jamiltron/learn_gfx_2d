@@ -10,6 +10,10 @@ glutin = "*"
 time = "*"
 
 [[example]]
+name = "square_interpolated"
+path = "examples/square_interpolated/src/main.rs"
+
+[[example]]
 name = "triangle_basic"
 path = "examples/triangle_basic/src/main.rs"
 
