@@ -10,4 +10,4 @@ glutin = "*"
 
 [[example]]
 name = "triangle_basic"
-path = "examples/triangle_basic/main.rs"
+path = "examples/triangle_basic/src/main.rs"
