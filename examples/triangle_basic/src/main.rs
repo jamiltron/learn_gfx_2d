@@ -101,7 +101,7 @@ pub fn main() {
         // swap the new buffer onto our screen
         window.swap_buffers().unwrap();
 
-        // provide any additional cleanup neccessary
+        // perform any additional cleanup neccessary
         device.cleanup();
     }
 }
