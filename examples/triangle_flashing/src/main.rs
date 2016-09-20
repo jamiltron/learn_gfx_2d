@@ -42,7 +42,7 @@ pub fn main() {
         .with_dimensions(WINDOW_WIDTH, WINDOW_HEIGHT)
         .with_gl(glutin::GlRequest::Specific(glutin::Api::OpenGl, (3, 2)))
         .with_gl_profile(glutin::GlProfile::Core)
-        .with_title("Triangle Basic")
+        .with_title("Triangle Flashing")
         .with_vsync();
 
     let (window, mut device, mut factory, main_color, _) =
