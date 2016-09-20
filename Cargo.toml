@@ -1,0 +1,13 @@
+[package]
+name = "learn_gfx_2d"
+version = "0.1.0"
+authors = ["Justin Hamilton <justinanthonyhamilton@gmail.com>"]
+
+[dependencies]
+gfx = "*"
+gfx_window_glutin = "*"
+glutin = "*"
+
+[[example]]
+name = "triangle_basic"
+path = "examples/triangle_basic/main.rs"
