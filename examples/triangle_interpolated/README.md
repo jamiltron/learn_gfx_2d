@@ -2,7 +2,7 @@
 
 ## Triangle Interpolated
 
-This example renders a simple 2d triangle consisting of one three colors, one at
+This example renders a simple 2d triangle consisting of three colors, one at
 each point. The color is interpolated by the fragment shader the further in the
 triangle the individual pixels go.
 
