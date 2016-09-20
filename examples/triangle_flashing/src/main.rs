@@ -12,6 +12,7 @@ use gfx::Device;
 use std::f32;
 
 gfx_defines! {
+    // a reference to the type we will use as the uniform color in the vertex shader
     constant ColorData {
         color: [f32; 3] = "color_data",
     }
@@ -56,13 +57,14 @@ pub fn main() {
 
     let (vertex_buffer, slice) = factory.create_vertex_buffer_with_slice(&TRIANGLE, ());
 
-    // this time our pipe is mutable, because we will be changing the color value
+    // this time we add a constant buffer to pass color data through
     let data = pipe::Data {
         vertex_buffer: vertex_buffer,
         color_data: factory.create_constant_buffer(1),
         out_color: main_color,
     };
 
+    // this will hold the dynamic color value we will be flashing
     let mut color_data = ColorData { color: [1.0, 1.0, 1.0] };
 
     'main: loop {
