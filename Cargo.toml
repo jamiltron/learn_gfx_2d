@@ -4,10 +4,16 @@ version = "0.1.0"
 authors = ["Justin Hamilton <justinanthonyhamilton@gmail.com>"]
 
 [dependencies]
+cgmath = "*"
 gfx = "*"
 gfx_window_glutin = "*"
 glutin = "*"
+image = "*"
 time = "*"
+
+[[example]]
+name = "bouncing_kitten"
+path = "examples/bouncing_kitten/src/main.rs"
 
 [[example]]
 name = "square_interpolated"
