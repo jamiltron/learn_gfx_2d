@@ -12,7 +12,7 @@ image = "*"
 time = "*"
 
 [[example]]
-name = "bouncing_kitten"
+name = "kitten_bouncing"
 path = "examples/bouncing_kitten/src/main.rs"
 
 [[example]]
