@@ -13,7 +13,11 @@ time = "*"
 
 [[example]]
 name = "kitten_bouncing"
-path = "examples/bouncing_kitten/src/main.rs"
+path = "examples/kitten_bouncing/src/main.rs"
+
+[[example]]
+name = "kitten_keyboard"
+path = "examples/kitten_keyboard/src/main.rs"
 
 [[example]]
 name = "square_interpolated"
