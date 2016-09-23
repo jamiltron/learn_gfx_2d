@@ -1,6 +1,6 @@
 # LEARN GFX 2D
 
-## Bouncing Kitten
+## Kitten Bouncing
 
 This example renders a 2d sprite with transparency, and modify's the sprite's transform to make it move over time.
 
