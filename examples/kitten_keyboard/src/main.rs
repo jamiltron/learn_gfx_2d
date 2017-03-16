@@ -11,7 +11,7 @@ pub mod input;
 pub type ColorFormat = gfx::format::Rgba8;
 pub type DepthFormat = gfx::format::Depth;
 
-use gfx::{Device, tex};
+use gfx::{Device, texture};
 use gfx::traits::FactoryExt;
 use glutin::{ElementState, Event, VirtualKeyCode};
 use input::Input;
@@ -79,8 +79,10 @@ fn load_texture<R, F>(factory: &mut F,
 {
     let img = image::load(Cursor::new(data), image::PNG).unwrap().to_rgba();
     let (width, height) = img.dimensions();
-    let kind = tex::Kind::D2(width as tex::Size, height as tex::Size, tex::AaMode::Single);
-    let (_, view) = factory.create_texture_const_u8::<gfx::format::Rgba8>(kind, &[&img])
+    let kind = texture::Kind::D2(width as texture::Size,
+                                 height as texture::Size,
+                                 texture::AaMode::Single);
+    let (_, view) = factory.create_texture_immutable_u8::<gfx::format::Rgba8>(kind, &[&img])
         .unwrap();
     Ok(view)
 }
@@ -122,6 +124,7 @@ fn main() {
                                                                kitten_position[1],
                                                                0.0));
     let scale = cgmath::Matrix4::from_nonuniform_scale(SPRITE_WIDTH, SPRITE_HEIGHT, 1.0);
+
 
     let mut view = View {
         model: (translation * scale).into(),
