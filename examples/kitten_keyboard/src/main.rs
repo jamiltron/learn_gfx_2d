@@ -13,7 +13,7 @@ pub type DepthFormat = gfx::format::Depth;
 
 use gfx::{Device, texture};
 use gfx::traits::FactoryExt;
-use glutin::{ElementState, Event, VirtualKeyCode};
+use glutin::{Event, VirtualKeyCode};
 use input::Input;
 use std::io::Cursor;
 
@@ -147,29 +147,8 @@ fn main() {
             match event {
                 Event::KeyboardInput(_, _, Some(VirtualKeyCode::Escape)) |
                 Event::Closed => break 'main,
-                Event::KeyboardInput(ElementState::Pressed, _, Some(VirtualKeyCode::Left)) => {
-                    input.left_is_pressed = true;
-                }
-                Event::KeyboardInput(ElementState::Pressed, _, Some(VirtualKeyCode::Right)) => {
-                    input.right_is_pressed = true;
-                }
-                Event::KeyboardInput(ElementState::Pressed, _, Some(VirtualKeyCode::Up)) => {
-                    input.up_is_pressed = true;
-                }
-                Event::KeyboardInput(ElementState::Pressed, _, Some(VirtualKeyCode::Down)) => {
-                    input.down_is_pressed = true;
-                }
-                Event::KeyboardInput(ElementState::Released, _, Some(VirtualKeyCode::Left)) => {
-                    input.left_is_pressed = false;
-                }
-                Event::KeyboardInput(ElementState::Released, _, Some(VirtualKeyCode::Right)) => {
-                    input.right_is_pressed = false;
-                }
-                Event::KeyboardInput(ElementState::Released, _, Some(VirtualKeyCode::Up)) => {
-                    input.up_is_pressed = false;
-                }
-                Event::KeyboardInput(ElementState::Released, _, Some(VirtualKeyCode::Down)) => {
-                    input.down_is_pressed = false;
+                Event::KeyboardInput(_, _, _) => {
+                    input.handle_keyboard_input(event);
                 }
                 _ => {}
             }
